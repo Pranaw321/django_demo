@@ -1,0 +1,13 @@
+1)create python virtual env
+ reference https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
+2) install postgreSQL
+ official link :https://www.postgresql.org/download/
+3) go to ApiPythonProject directory
+
+run some commands
+    pip install -r requirements.txt
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py runserver
+
+check swagger UI at http://localhost:8000/
