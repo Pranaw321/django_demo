@@ -3,6 +3,8 @@ from django.http.response import JsonResponse
 from django.http import QueryDict
 from rest_framework import status, generics
 import jwt
+from rest_framework.views import APIView
+
 from User.serializers import UserSerializer, UserLoginSerializer
 from User.validator import check_user_exist
 
@@ -57,7 +59,7 @@ class User(generics.CreateAPIView):
         return JsonResponse(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class Users(generics.ListCreateAPIView):
+class Users(APIView):
     def get(self, request):
         users = UserModal.objects.all()
         users_serializer = UserSerializer(users, many=True)
