@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 
 from User.serializers import UserSerializer, UserLoginSerializer
 from User.validator import check_user_exist
+from . import fasade
 
 # import internal modules
 from . import mapper
@@ -71,6 +72,7 @@ class UserLogin(generics.CreateAPIView):
 
     def post(self, request):
         user = request.POST.dict()
+        fasade.login(user)
         user_data = UserModal.objects.all().filter(phoneNo=user.get('phoneNo'), password=user.get('password'))
         if user_data:
             user = {
